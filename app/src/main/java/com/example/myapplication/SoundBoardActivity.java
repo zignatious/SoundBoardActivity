@@ -22,9 +22,6 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
     private Button bNoteButton;
     private Button scaleButton;
     private SoundPool soundPool;
-    private int aNoteSound;
-    private int bNoteSound;
-    private int bbNoteSound;
     boolean loaded = false;
     private Map<Integer, Integer> noteMap;
     private List<Note> scaleTrack = new ArrayList<Note>();
@@ -63,9 +60,9 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void loadSounds() {
-            aNoteSound = soundPool.load(this, R.raw.scalea, 1);
-        bNoteSound = soundPool.load(this, R.raw.scaleb, 1);
-        bbNoteSound = soundPool.load(this, R.raw.scalebb, 1);
+        int aNoteSound = soundPool.load(this, R.raw.scalea, 1);
+        int bNoteSound = soundPool.load(this, R.raw.scaleb, 1);
+        int bbNoteSound = soundPool.load(this, R.raw.scalebb, 1);
 
         noteMap = new HashMap<>();
         noteMap.put(aNoteButton.getId(), aNoteSound);
@@ -157,12 +154,12 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
         private int soundId;
         private int millisDelay;
 
-        public Note(int soundId, int millisDelay) {
+        private Note(int soundId, int millisDelay) {
             this.soundId = soundId;
             this.millisDelay = millisDelay;
         }
 
-        public int getSoundId() {
+        private int getSoundId() {
             return soundId;
         }
 
@@ -170,7 +167,7 @@ public class SoundBoardActivity extends AppCompatActivity implements View.OnClic
             this.soundId = soundId;
         }
 
-        public int getMillisDelay() {
+        private int getMillisDelay() {
             return millisDelay;
         }
 
